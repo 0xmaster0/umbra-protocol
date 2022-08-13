@@ -305,7 +305,7 @@ async function resolveEns(name: string, provider: EthersProvider) {
     // against L1, as explained here: https://twitter.com/makoto_inoue/status/1453737962110275598
     const { chainId } = await provider.getNetwork();
     if (chainId !== 1)
-      provider = new StaticJsonRpcProvider(`https://mainnet.infura.io/v3/${String(process.env.INFURA_ID)}`);
+      provider = new StaticJsonRpcProvider(`https://mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189`);
     const address = await provider.resolveName(name);
     return address || null;
   } catch (e) {

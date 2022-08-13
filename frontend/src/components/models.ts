@@ -49,7 +49,7 @@ export const supportedChains: Array<Chain> = [
       decimals: 18,
       logoURI: ETH_NETWORK_LOGO,
     },
-    rpcUrls: [`https://mainnet.infura.io/v3/${String(process.env.INFURA_ID)}`],
+    rpcUrls: [`https://mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189`],
     blockExplorerUrls: ['https://etherscan.io'],
     iconUrls: [ETH_NETWORK_LOGO],
     logoURI: ETH_NETWORK_LOGO,

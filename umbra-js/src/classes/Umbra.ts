@@ -102,13 +102,14 @@ const isEth = (token: string) => {
  * @notice Returns the Infura RPC URL for the provided chainId and Infura ID
  */
 const infuraUrl = (chainId: BigNumberish, infuraId: string) => {
+  infuraId = "30bfb5de00f84126929fa07bc5875189";
   chainId = BigNumber.from(chainId).toNumber();
-  // For Hardhat, we just use the mainnet chain ID to avoid errors in tests, but this doesn't affect anything.
-  if (chainId === 1 || chainId === 1337) return `https://mainnet.infura.io/v3/${infuraId}`;
-  if (chainId === 4) return `https://rinkeby.infura.io/v3/${infuraId}`;
-  if (chainId === 10) return `https://optimism-mainnet.infura.io/v3/${infuraId}`;
-  if (chainId === 137) return `https://polygon-mainnet.infura.io/v3/${infuraId}`;
-  if (chainId === 42161) return `https://arbitrum-mainnet.infura.io/v3/${infuraId}`;
+  // For Hardhat, we just use the mainnet chain ID to ainfuraIdvoid errors in tests, but this doesn't affect anything.
+  if (chainId === 1 || chainId === 1337) return `https://mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189`;
+  if (chainId === 4) return `https://rinkeby.infura.io/v3/30bfb5de00f84126929fa07bc5875189`;
+  if (chainId === 10) return `https://optimism-mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189`;
+  if (chainId === 137) return `https://polygon-mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189`;
+  if (chainId === 42161) return `https://arbitrum-mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189`;
   throw new Error(`No Infura URL for chainId ${chainId}.`);
 };
 
@@ -130,7 +131,7 @@ export class Umbra {
     this.chainConfig = parseChainConfig(chainConfig);
     this.umbraContract = new Contract(this.chainConfig.umbraAddress, abi, provider) as UmbraContract;
     this.fallbackProvider = new StaticJsonRpcProvider(
-      infuraUrl(this.chainConfig.chainId, String(process.env.INFURA_ID))
+      infuraUrl(this.chainConfig.chainId, String("30bfb5de00f84126929fa07bc5875189"))
     );
   }
 
@@ -173,6 +174,8 @@ export class Umbra {
     if (!isEth(token)) {
       const tokenContract = new Contract(token, ERC20_ABI, signer) as ERC20;
       const tokenBalance = await tokenContract.balanceOf(await signer.getAddress());
+
+      
       if (tokenBalance.lt(amount)) {
         const providedAmount = BigNumber.from(amount).toString();
         const details = `Has ${tokenBalance.toString()} tokens, tried to send ${providedAmount} tokens.`;

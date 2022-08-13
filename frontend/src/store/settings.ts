@@ -12,12 +12,12 @@ const settings = {
 
 // Shared state between instances
 type Language = { label: string; value: string };
-const isDark = ref(false); // true if user has dark mode turned on
+const isDark = ref(true); // true if user has dark mode turned on
 const advancedMode = ref(false); // true if user has advanced mode turned on
 const language = ref<Language>({ label: '', value: '' }); //language code
 const supportedLanguages = [
-  { label: 'English', value: 'en-us' },
   { label: '中文', value: 'zh-cn' },
+  { label: 'English', value: 'en-us' },
 ];
 const startBlock = ref<number | undefined>(undefined); // block number to start scanning from
 const endBlock = ref<number | undefined>(undefined); // block number to scan through

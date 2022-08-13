@@ -83,9 +83,12 @@ function useKeys() {
       // Save public keys to the StealthKeyRegistry
       const spendingPubKey = String(spendingKeyPair.value?.publicKeyHex);
       const viewingPubKey = String(viewingKeyPair.value?.publicKeyHex);
+      
       const tx = await stealthKeyRegistry.value?.setStealthKeys(spendingPubKey, viewingPubKey, signer?.value);
       void txNotify(tx.hash, signer.value?.provider as Provider);
       await tx.wait();
+
+
       setIsAccountSetup(true);
       syncStealthKeys(); // update store with new keys
       isSetupComplete.value = true;

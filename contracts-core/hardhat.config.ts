@@ -98,7 +98,7 @@ const config: HardhatUserConfig = {
         path: "m/44'/60'/0'/0",
       },
       chainId: chainIds['mainnet'],
-      url: `https://mainnet.infura.io/v3/${infuraApiKey}`,
+      url: 'https://mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189',
       gasPrice: 60000000000, // 60 gwei
     },
     polygon: {

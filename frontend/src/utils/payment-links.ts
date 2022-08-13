@@ -11,7 +11,7 @@ import { UmbraApi } from 'src/utils/umbra-api';
  */
 function getProvider() {
   const { provider } = useWalletStore();
-  return provider.value || new StaticJsonRpcProvider(`https://mainnet.infura.io/v3/${String(process.env.INFURA_ID)}`);
+  return provider.value || new StaticJsonRpcProvider(`https://mainnet.infura.io/v3/30bfb5de00f84126929fa07bc5875189`);
 }
 
 /**
