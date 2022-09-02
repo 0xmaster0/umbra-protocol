@@ -18,7 +18,7 @@ function useWallet(context: SetupContext, to: string) {
       await context.root.$router.push({ name: to });
       return;
     }
-
+    alert('wallet');
     await connectWallet();
 
     if (to) await context.root.$router.push({ name: to }); // redirect to specified page

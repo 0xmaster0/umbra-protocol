@@ -1,0 +1,8 @@
+{
+  "deployer": "TWDijnkh9bJiMvTKcrVFXTBtUKPigPRxCS",
+  "contracts": {
+    "Umbra": "TVeqaZbeharccgoz4GYzwiCPp8ae6v3KzW",
+    "StealthKeyRegistry": "TToe1b2DGER99YhHWrCLJf942qyTt18xg5"
+  },
+  "actions": { "DeployingContractsToNetwork": "tron-nile" }
+}
